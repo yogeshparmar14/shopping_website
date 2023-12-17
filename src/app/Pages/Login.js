@@ -290,7 +290,7 @@ function Login() {
             ...prevState,
             confirm_password: false
         }))
-        
+        setLogin(true)
 
     }
 
