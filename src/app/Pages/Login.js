@@ -125,87 +125,172 @@ function Login() {
     const handleLoginSubmit = () => {
 
         if (!loginData.email) {
-            setLoginDataError({ ...loginDataError, email: true });
+            setLoginDataError(prevState => ({
+                ...prevState,
+                email: true
+            }));
             return
         }
-        setLoginDataError({ ...loginDataError, email: false });
+        setLoginDataError(prevState => ({
+            ...prevState,
+            email: false
+        }));
+
+
+       
         if (!loginData.password) {
-            setLoginDataError({ ...loginDataError, password: true });
+            setLoginDataError(prevState => ({
+                ...prevState,
+                password: true
+            }));
             return
         }
-        setLoginDataError({ ...loginDataError, password: false });
+        setLoginDataError(prevState => ({
+            ...prevState,
+            password: false
+        }));
         navigate('/home');
         console.log("loginData", loginData)
     }
 
     const handleSignSubmit = () => {
 
-
-
         if (!signUpData.first_name) {
-            setSignUpDataError({ ...signUpDataError, first_name: true });
+            setSignUpDataError(prevState => ({
+                ...prevState,
+                first_name: true
+            }));
             return
         }
-        setSignUpDataError({ ...signUpDataError, first_name: false });
+        setSignUpDataError(prevState => ({
+            ...prevState,
+            first_name: false
+        }));
 
         if (!signUpData.email) {
-            setSignUpDataError({ ...signUpDataError, email: true });
+            setSignUpDataError(prevState => ({
+                ...prevState,
+                email: true
+            }));
+
             return
         }
-        setSignUpDataError({ ...signUpDataError, email: false });
+        setSignUpDataError(prevState => ({
+            ...prevState,
+            email: false
+        }));
 
         if (!signUpData.address) {
-            setSignUpDataError({ ...signUpDataError, address: true });
+            setSignUpDataError(prevState => ({
+                ...prevState,
+                address: true
+            }));
             return
         }
-        setSignUpDataError({ ...signUpDataError, address: false });
+        setSignUpDataError(prevState => ({
+            ...prevState,
+            address: false
+        }));
 
         if (!country) {
-            setSignUpDataError({ ...signUpDataError, country: true });
+            setSignUpDataError(prevState => ({
+                ...prevState,
+                country: true
+            }));
             return
         }
-        setSignUpDataError({ ...signUpDataError, country: false });
+        setSignUpDataError(prevState => ({
+            ...prevState,
+            country: false
+        }));
         if (!state) {
-            setSignUpDataError({ ...signUpDataError, state: true });
+            setSignUpDataError(prevState => ({
+                ...prevState,
+                state: true
+            }));
+          
             return
         }
-        setSignUpDataError({ ...signUpDataError, state: false });
+        setSignUpDataError(prevState => ({
+            ...prevState,
+            state: false
+        }));
         if (!city) {
-            setSignUpDataError({ ...signUpDataError, city: true });
+            setSignUpDataError(prevState => ({
+                ...prevState,
+                city: true
+            }));
             return
         }
-        setSignUpDataError({ ...signUpDataError, city: false });
+        setSignUpDataError(prevState => ({
+            ...prevState,
+            city: false
+        }));
+       
         if (!signUpData.pincode) {
-            setSignUpDataError({ ...signUpDataError, pincode: true });
+            setSignUpDataError(prevState => ({
+                ...prevState,
+                pincode: true
+            }));
+             
             return
         }
-        setSignUpDataError({ ...signUpDataError, pincode: false });
+        setSignUpDataError(prevState => ({
+            ...prevState,
+            pincode: false
+        }));
 
         if (!signUpData.isdCode) {
-            setSignUpDataError({ ...signUpDataError, isdCode: true });
+            setSignUpDataError(prevState => ({
+                ...prevState,
+                isdCode: true 
+            }));
+            
             return
         }
-        setSignUpDataError({ ...signUpDataError, isdCode: false });
+        setSignUpDataError(prevState => ({
+            ...prevState,
+            isdCode: false
+        }));
 
         if (!signUpData.mobile) {
-            setSignUpDataError({ ...signUpDataError, mobile: true });
+            setSignUpDataError(prevState => ({
+                ...prevState,
+                mobile: true 
+            }));
             return
         }
-        setSignUpDataError({ ...signUpDataError, mobile: false });
+        setSignUpDataError(prevState => ({
+            ...prevState,
+            mobile: false
+        }));
 
 
 
         if (!signUpData.password) {
-            setSignUpDataError({ ...signUpDataError, password: true });
+            setSignUpDataError(prevState => ({
+                ...prevState,
+                password: true
+            }))
             return
         }
-        setSignUpDataError({ ...signUpDataError, password: false });
+        setSignUpDataError(prevState => ({
+            ...prevState,
+            password: false
+        }))
 
         if (!signUpData.confirm_password) {
-            setSignUpDataError({ ...signUpDataError, confirm_password: true });
+            setSignUpDataError(prevState => ({
+                ...prevState,
+                confirm_password: true
+            }))
             return
         }
-        setSignUpDataError({ ...signUpDataError, confirm_password: false })
+        setSignUpDataError(prevState => ({
+            ...prevState,
+            confirm_password: false
+        }))
+        
 
     }
 
@@ -265,7 +350,7 @@ function Login() {
                                 justifyContent: "end"
                             }}>
                                 <button className='btn-none' style={{ color: "blue" }}
-                                onClick={()=>{ navigate('/forgotPass');}}
+                                    onClick={() => { navigate('/forgotPass'); }}
                                 >
                                     Forgot Password
                                 </button>
@@ -386,9 +471,9 @@ function Login() {
                                     <div className='row' style={{ marginTop: "2%" }}>
                                         <select className='inputBox' style={{ width: "95%" }} onChange={(event) => { setCountry(event.target.value) }}>
                                             <option value="">Select an country</option>
-                                            {countries.map((country) => {
+                                            {countries.map((country, i) => {
                                                 return (
-                                                    <option value={country.name}>{country.name}</option>
+                                                    <option key={i} value={country.name}>{country.name}</option>
                                                 )
                                             })}
                                         </select>
@@ -406,9 +491,9 @@ function Login() {
                                     <div className='row' style={{ marginTop: "2%" }}>
                                         <select className='inputBox' style={{ width: "95%" }} onChange={(event) => { setState(event.target.value) }}>
                                             <option value="">Select an state</option>
-                                            {states.map((state) => {
+                                            {states.map((state, i) => {
                                                 return (
-                                                    <option value={state.name}>{state.name}</option>
+                                                    <option key={i} value={state.name}>{state.name}</option>
                                                 )
                                             })}
                                         </select>
@@ -428,9 +513,9 @@ function Login() {
                                     <div className='row' style={{ marginTop: "2%" }}>
                                         <select className='inputBox' style={{ width: "95%" }} onChange={(event) => { setCity(event.target.value) }}>
                                             <option value="">Select an city</option>
-                                            {cities.map((city) => {
+                                            {cities.map((city, i) => {
                                                 return (
-                                                    <option value={city}>{city}</option>
+                                                    <option key={i} value={city}>{city}</option>
                                                 )
                                             })}
                                         </select>
@@ -473,9 +558,9 @@ function Login() {
                                                 onChange={(event) => { signHandleChange("isdCode", event.target.value) }}
                                             >
                                                 <option value="">Select ISD Code</option>
-                                                {countries.map((country) => {
+                                                {countries.map((country, i) => {
                                                     return (
-                                                        <option value={country.dial_code}>{country.dial_code}</option>
+                                                        <option key={i} value={country.dial_code}>{country.dial_code}</option>
                                                     )
                                                 })}
                                             </select>
